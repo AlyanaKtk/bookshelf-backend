@@ -12,6 +12,7 @@ public class mapBook {
         book.setTitle(dto.getTitle());
         book.setAuthor(dto.getAuthor());
         book.setRating(dto.getRating());
+        book.setPages(dto.getPages());
         return book;
     }
     public bookDTO toDTO(Book book){
@@ -20,6 +21,7 @@ public class mapBook {
         dto.setTitle(book.getTitle());
         dto.setAuthor(book.getAuthor());
         dto.setRating(book.getRating());
+        dto.setPages(book.getPages());
         return dto;
     }
 }
