@@ -14,25 +14,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/books")
 public class BookController {
 
-
     private final bookService bookservice;
     private final mapBook mapBooker;
-
-
     public BookController(bookService bookservice, mapBook mapBooker) {
         this.bookservice = bookservice;
         this.mapBooker = mapBooker;
 
     }
-
-    /*@GetMapping("/")
-    @ResponseBody
-    public String sayHello()
-    {
-         return "This is home page, will be redone";
-    }*/
-
-    @GetMapping("/")
+    @GetMapping("/") //READ
     @ResponseBody
     public List<bookDTO> getAllBooks()
     {
@@ -40,7 +29,7 @@ public class BookController {
 
         return books.stream().map(mapBooker::toDTO).collect(Collectors.toList());
     }
-    @GetMapping("/{book_id}")
+    @GetMapping("/{book_id}") //READ
     @ResponseBody
     public bookDTO getBook(@PathVariable(name = "book_id") Long id)
     {
@@ -48,14 +37,14 @@ public class BookController {
         return mapBooker.toDTO(book);
     }
 
-    @PostMapping("/")
+    @PostMapping("/") //CREATE
     @ResponseBody
     public bookDTO createBook(@RequestBody bookDTO bookdto)
     {
         Book book = mapBooker.toBook(bookdto);
         return mapBooker.toDTO(bookservice.saveBook(book));
     }
-    @PutMapping("/{book_id}")
+    @PutMapping("/{book_id}") //UPDATE
     @ResponseBody
     public bookDTO updateBook(@PathVariable(name = "book_id") Long id, @RequestBody Book book)
     {
@@ -67,7 +56,7 @@ public class BookController {
         bookservice.saveBook(book2);
         return mapBooker.toDTO(book2);
     }
-    @DeleteMapping("/{book_id}")
+    @DeleteMapping("/{book_id}") //DELETE
     @ResponseBody
     public bookDTO deleteBook(@PathVariable(name = "book_id") Long id)
     {
@@ -75,7 +64,6 @@ public class BookController {
         bookservice.deleteBook(book);
         return mapBooker.toDTO(book);
     }
-    //временное
 
 
 

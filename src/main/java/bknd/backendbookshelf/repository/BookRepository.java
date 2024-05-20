@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
     @Override
-    public List<Book> findAll();
+    public List<Book> findAll(); //поиск всех книг
 
 
 }

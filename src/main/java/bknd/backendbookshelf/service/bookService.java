@@ -5,7 +5,7 @@ import bknd.backendbookshelf.model.Book;
 import java.util.List;
 import java.util.Optional;
 
-public interface bookService {
+public interface bookService { //интерфейс сервиса, методы CRUD
     List<Book> getBooks();
     Book getBook(Long id);
     Book saveBook(Book book);
